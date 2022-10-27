@@ -1,0 +1,11 @@
+<h1 mat-dialog-title>{{data.title}}</h1>
+<form mat-dialog-content id="promptForm" [formGroup]="form" (ngSubmit)="onSubmit()">
+  <mat-form-field>
+    <input type="text" matInput formControlName="value" />
+    <mat-error>Value is required</mat-error>
+  </mat-form-field>
+</form>
+<div mat-dialog-actions>
+  <button type="button" mat-button mat-dialog-close>Cancel</button>
+  <button type="submit" form="promptForm" mat-button>OK</button>
+</div>

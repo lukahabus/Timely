@@ -1,0 +1,25 @@
+<ng-container *ngIf="task">
+  <button mat-icon-button [matMenuTriggerFor]="menu">
+    <mat-icon>more_vert</mat-icon>
+  </button>
+  <mat-menu #menu="matMenu">
+    <ng-template matMenuContent>
+      <div mat-menu-item (click)="$event.stopPropagation()">
+        <mat-select [value]="task.state" (selectionChange)="changeTaskState($event.value)">
+          <mat-select-trigger>{{task.state|taskState}}</mat-select-trigger>
+          <mat-option [value]="taskState.active"
+            ><mat-icon>{{taskState.active|taskStateIcon}}</mat-icon>Active</mat-option
+          >
+          <mat-option [value]="taskState.finished"
+            ><mat-icon>{{taskState.finished|taskStateIcon}}</mat-icon>Finished</mat-option
+          >
+          <mat-option [value]="taskState.dropped"
+            ><mat-icon>{{taskState.dropped|taskStateIcon}}</mat-icon>Dropped</mat-option
+          >
+        </mat-select>
+      </div>
+      <button mat-menu-item type="button" (click)="renameTask()">Rename</button>
+      <button mat-menu-item type="button" (click)="deleteTask()">Delete</button>
+    </ng-template>
+  </mat-menu>
+</ng-container>

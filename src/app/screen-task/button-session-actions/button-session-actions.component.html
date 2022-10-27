@@ -1,0 +1,11 @@
+<button mat-icon-button [matMenuTriggerFor]="menu">
+  <mat-icon>more_vert</mat-icon>
+</button>
+<mat-menu #menu="matMenu">
+  <ng-template matMenuContent>
+    <button mat-menu-item type="button" (click)="edit()">Edit</button>
+    <button mat-menu-item type="button" (click)="remove()">Delete</button>
+    <a routerLink="." [queryParams]="skipAfterParams" queryParamsHandling="merge"> </a>
+    <a routerLink="." [queryParams]="skipBeforeParams" queryParamsHandling="merge"> </a>
+  </ng-template>
+</mat-menu>
